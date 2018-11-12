@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TipTree</string>
+    <string name="action_about">About</string>
+    <string name="input_check_amount_hint">Check</string>
+    <string name="input_tip_percentage_hint">Tip Percentage</string>
+    <string name="bill_amount_label">Subtotal</string>
+    <string name="tip_amount_label">Tip</string>
+    <string name="grand_total_label">Total</string>
+
+    <string name="dollar_amount">$%1$.02f</string>
+</resources>
