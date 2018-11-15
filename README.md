@@ -3,7 +3,7 @@ Android tip calculator written in Kotlin.
 Calculates tip in real time. Aims to be user friendly and quick to use. Allows on the fly modification of tip percentage and number of people to split the check with.
 Features a dark theme to conserve battery.
 
-![](<img align=right src="https://andrewgroe.github.io/images/TipTreeDemoLoop.gif" alt="Demo" width="200" height="400">)
+![](TipTreeDemoLoop.gif)
 
 <h3>Project Details</h3>
           <ul> 
