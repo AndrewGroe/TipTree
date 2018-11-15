@@ -4,22 +4,24 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.andrewgroe.tiptree.utils.DecimalDigitsInputFilter
+import android.widget.EditText
 import com.andrewgroe.tiptree.R
 import com.andrewgroe.tiptree.databinding.ActivityTipCalculatorBinding
+import com.andrewgroe.tiptree.utils.afterTextChanged
+import com.andrewgroe.tiptree.utils.makeClearableEditText
+import com.andrewgroe.tiptree.utils.onRightDrawableClicked
+import com.andrewgroe.tiptree.utils.setInputFilter
 import com.andrewgroe.tiptree.viewmodel.CalculatorViewModel
 import com.ramotion.fluidslider.FluidSlider
 import kotlinx.android.synthetic.main.content_tip_calculator.*
 
 
-class TipCalculatorActivity : AppCompatActivity(), TextWatcher {
+class TipCalculatorActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityTipCalculatorBinding
 
@@ -30,17 +32,31 @@ class TipCalculatorActivity : AppCompatActivity(), TextWatcher {
         binding.vm = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         setSupportActionBar(binding.toolbar)
 
-        // Limit text input to 2 decimal places
-        input_check_amount.filters = arrayOf<InputFilter>(DecimalDigitsInputFilter(5, 2))
-        // Set listener on EditText
-        input_check_amount.addTextChangedListener(this)
-        sliderHandler()
-        splitNumberPickerListener()
+        initEditText()
+        initSlider()
+        initNumberPicker()
 
     }
 
-    // Listens for changes in order to split check
-    private fun splitNumberPickerListener() {
+    private fun initEditText() {
+        val input = input_check_amount
+
+        // Limit text input decimal places
+        setInputFilter(input)
+
+        // Listen for changes in EditText
+        input.afterTextChanged { binding.vm?.calculateTip() }
+
+        // Add cancel button to EditText
+        addRightCancelDrawable(input)
+        // Cancel button onClick
+        input.onRightDrawableClicked { it.text.clear() }
+        // Handle cancel button visibility
+        input.makeClearableEditText(null, null)
+    }
+
+    // Number Picker for splitting check
+    private fun initNumberPicker() {
         number_picker.setOnValueChangeListener { view, oldValue, newValue ->
             // Send new value to ViewModel
             binding.vm!!.inputSplit = newValue
@@ -67,9 +83,8 @@ class TipCalculatorActivity : AppCompatActivity(), TextWatcher {
         }
     }
 
-
-    // Handles tip percentage slider setup and monitoring
-    private fun sliderHandler() {
+    // Tip percentage slider setup and monitoring
+    private fun initSlider() {
         // Setup tip percentage slider
         val max = 50
         val min = 5
@@ -90,26 +105,16 @@ class TipCalculatorActivity : AppCompatActivity(), TextWatcher {
         slider.endText = "$max%"
     }
 
-
-    /*
-    Text Watcher Implementation Methods
-    */
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-    }
-
-    override fun afterTextChanged(s: Editable?) {
-        binding.vm?.calculateTip()
+    // Adds cancel button in EditText
+    private fun addRightCancelDrawable(editText: EditText) {
+        val cancel = ContextCompat.getDrawable(this, R.drawable.ic_cancel_red_24dp)
+        cancel?.setBounds(0, 0, cancel.intrinsicWidth, cancel.intrinsicHeight)
+        editText.setCompoundDrawables(null, null, cancel, null)
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
