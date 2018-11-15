@@ -3,6 +3,8 @@ package com.andrewgroe.tiptree.view
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
+import android.icu.util.VersionInfo
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -10,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import com.andrewgroe.tiptree.BuildConfig
 import com.andrewgroe.tiptree.R
 import com.andrewgroe.tiptree.databinding.ActivityTipCalculatorBinding
 import com.andrewgroe.tiptree.utils.afterTextChanged
@@ -19,6 +22,8 @@ import com.andrewgroe.tiptree.utils.setInputFilter
 import com.andrewgroe.tiptree.viewmodel.CalculatorViewModel
 import com.ramotion.fluidslider.FluidSlider
 import kotlinx.android.synthetic.main.content_tip_calculator.*
+import mehdi.sakout.aboutpage.AboutPage
+import mehdi.sakout.aboutpage.Element
 
 
 class TipCalculatorActivity : AppCompatActivity() {
@@ -37,6 +42,7 @@ class TipCalculatorActivity : AppCompatActivity() {
         initNumberPicker()
 
     }
+
 
     private fun initEditText() {
         val input = input_check_amount

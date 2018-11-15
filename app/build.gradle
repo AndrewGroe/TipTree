@@ -41,6 +41,9 @@ dependencies {
     // Elegant Number Button
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
 
+    // About Page
+    implementation 'com.github.medyo:android-about-page:1.2.4'
+
     // Support
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
