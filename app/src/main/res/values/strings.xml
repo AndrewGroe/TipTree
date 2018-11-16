@@ -8,11 +8,22 @@
     <string name="grand_total_label">Total</string>
 
     <string name="dollar_amount">$%1$.02f</string>
-    <string name="about_credits">
-        <![CDATA[<a href="https://github.com/Ramotion/fluid-slider">Fluid Slider</a>]]>
-        <![CDATA[<a href="https://github.com/ashik94vc/ElegantNumberButton">Elegant Number Button</a>]]>
-        <![CDATA[Icon made by <a href="https://roundicons.com/">Round Icons</a> from <a href="https://www.flaticon.com/">flaticon.com</a>]]>
+
+    <string name="credits_slider">
+        Fluid Slider - Ramotion
     </string>
 
-    <string name="about_page_description">Tip Tree is a tip calculator written in Kotlin. This project was created and maintained by a single developer so periodic updates can be expected. If you encounter any issues or simply want to say thanks please feel free to do so below. </string>
+    <string name="credits_picker">
+        Elegant Number Button - ashik94vc
+    </string>
+
+    <string name="credits_icon">
+        Icons courtesy of Round Icons
+    </string>
+
+    <string name="about_page_description">
+        Tip Tree is a tip calculator written in Kotlin. This project was created and maintained by
+        a single developer so periodic updates can be expected. If you encounter any issues or
+        simply want to say thanks please feel free to do so below.
+    </string>
 </resources>
