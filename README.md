@@ -17,5 +17,5 @@ Features a dark theme to conserve battery.
  	<ul>
           	<li><a href="https://github.com/Ramotion/fluid-slider">Fluid Slider</a> for selecting tip percentage</li>
           	<li><a href="https://github.com/ashik94vc/ElegantNumberButton">Elegant Number Button</a> to change number of people in party</li>
-          	<li><a href="https://github.com/medyo/android-about-page">Android About Page</a> to generate about page</li>
+          	<li><a href="https://github.com/medyo/android-about-page">Android About Page</a> to bootstrap about page</li>
  	</ul>
